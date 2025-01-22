@@ -1,3 +1,106 @@
-<h1>Home Page</h1>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, aliquid veritatis! Tenetur consectetur maiores deserunt eaque id eius dolores aperiam?</p>
-<a href="/about">Go to about</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+    :root {
+      --bg-color: #f4f4f9;
+      --text-color: #333;
+      --card-bg: #fff;
+      --link-bg: #0078d4;
+      --link-hover-bg: #005bb5;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --link-bg: #bb86fc;
+      --link-hover-bg: #3700b3;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 10px;
+      text-align: center;
+      background-color: var(--card-bg);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    a {
+      display: inline-block;
+      margin: 20px auto;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      background-color: var(--link-bg);
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: var(--link-hover-bg);
+    }
+
+    .toggle-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: var(--link-bg);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--link-hover-bg);
+    }
+  </style>
+</head>
+<body>
+  <h1>Home Page</h1>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, aliquid veritatis! Tenetur consectetur maiores deserunt eaque id eius dolores aperiam?</p>
+  <a href="/about">Go to about</a>
+  <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <script>
+    const toggleDarkMode = () => {
+      document.body.classList.toggle('dark-mode');
+      // Save preference in localStorage
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+    };
+
+    // Load preference from localStorage
+    window.onload = () => {
+      const darkModePreference = localStorage.getItem('darkMode');
+      if (darkModePreference === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
+    };
+  </script>
+</body>
+</html>
